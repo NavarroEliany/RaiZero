@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RaiZero</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+   <header>
+        <nav>
+            <div class="logo">🌱 RaiZero</div>
+            <ul>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#calculadora">Calculadora</a></li>
+                <li><a href="#recomendaciones">Recomendaciones</a></li>
+                <li><a href="#comunidad">Comunidad</a></li>
+                <button id="loginBtn">🔒</button>
+            </ul>
+        </nav>
+    </header>
+
+
+    <section class="hero">
+        <h1>Tu Camino hacia la sostenibilidad empieza aquí !!</h1>
+        <p>Descubre el impacto ambiental de tu consumo y recibe estrategias efectivas para reducirlo.</p>
+        <button class="cta">Descúbrelo</button>
+    </section>
+
+    <section id="blog">
+        <h2>Blog</h2>
+        <h3>Artículos Importantes</h3>
+        <div class="articulos">
+            <div class="articulo">10 hábitos sostenibles que puedes adoptar hoy mismo</div>
+            <div class="articulo">Cómo reducir tus emisiones al cocinar en casa</div>
+            <div class="articulo">Transporte sostenible: beneficios y opciones ecológicas</div>
+        </div>
+    </section>
+
+    <section id="calculadora">
+        <h2>Calculadora de Huella de Carbono</h2>
+        <form id="carbonForm">
+           <select id="energia">
+  <option value="1500">Vivienda pequeña / bajo consumo</option>
+  <option value="3000">Vivienda mediana / consumo medio</option>
+  <option value="5000">Vivienda grande / alto consumo</option>
+</select>
+
+            <select id="transporte">
+                <option value="automovil">Automóvil</option>
+                <option value="transporte_publico">Transporte Público</option>
+                <option value="bicicleta">Bicicleta</option>
+                <option value="a_pie">A pie</option>
+                <option value="motocicleta">Motocicleta</option>
+            </select>
+            <select id="alimentacion">
+                <option value="omnivora">Omnívora</option>
+                <option value="vegetariana">Vegetariana</option>
+                <option value="vegana">Vegana</option>
+            </select>
+           <select id="consumo">
+  <option value="500">Bajo (pocas compras, estilo minimalista)</option>
+  <option value="1000">Medio (consumo moderado)</option>
+  <option value="1500">Alto (consumo frecuente, tecnología, moda, etc.)</option>
+</select>
+
+            <button type="submit">Calcular</button>
+            <div id="resultado" class="resultado"></div>
+
+        </form>
+        <p id="resultado"></p>
+    </section>
+
+    <section id="recomendaciones">
+        <h2>Recomendaciones</h2>
+        <ul class="tips">
+            <li>Desenchufa los cargadores</li>
+            <li>Haz compras locales y de temporada</li>
+            <li>Cambia los focos por bombillos LED</li>
+            <li>Camina o usa bicicleta</li>
+            <li>Reduce el consumo de carne roja</li>
+            <li>Apaga las luces innecesarias</li>
+            <li>Consume menos productos plásticos</li>
+            <li>Reutiliza y da una segunda vida</li>
+            <li>Planta un árbol o apoya reforestación</li>
+            <li>Reduce el uso de la secadora</li>
+        </ul>
+    </section>
+
+    <section id="comunidad">
+        <h2>Comunidad</h2>
+        <p>Espacio dispuesto para expresarnos y motivarnos al cambio</p>
+        <textarea placeholder="Escribe tu comentario..."></textarea>
+        <button>Comentar</button>
+    </section>
+
+    <!-- Overlay para el fondo oscuro -->
+    <div id="login-overlay"></div>
+<!-- Login modal -->
+    <div id="login-container">
+      <div class="login-section">
+        <h2>Iniciar Sesión</h2>
+        <form id="login-form">
+          <input type="email" placeholder="Correo" required />
+          <input type="password" placeholder="Contraseña" required />
+          <button type="submit">Entrar</button>
+        </form>
+
+        <p>¿Aún no te has registrado?</p>
+        <button id="show-register-btn">Regístrate</button>
+      </div>
+
+      <div id="register-section" class="hidden">
+        <h2>Crea tu cuenta</h2>
+        <form id="register-form">
+          <input type="text" placeholder="Nombre de Usuario" required />
+          <input type="email" placeholder="Correo" required />
+          <input type="password" placeholder="Contraseña" required />
+          <button type="submit">Registrarse</button>
+        </form>
+      </div>
+    </div>
+
+
+    <footer>
+        <p>Desarrollado por Ricardo José Angarita Rueda y Eliany Liseth Navarro Barbosa</p>
+        <p>“Cada acción cuenta. Tu huella puede ser el cambio que el planeta necesita.”</p>
+        <p>© 2025 RaiZero. Proyecto académico.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
