@@ -124,7 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       return;
     }
-
     Swal.fire({
       icon: "success",
       title: "Registro exitoso",
