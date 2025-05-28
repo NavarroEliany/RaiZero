@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Huella de Carbono</title>
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">RaiZero</div>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="calculadora.html">Calculadora</a></li>
+        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="comunidad.html">Comunidad</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="calculadora">
+      <h2>Calculadora de Huella de Carbono</h2>
+      <form id="carbonForm">
+        <label>Consumo de energía eléctrica (mensual en kWh):</label>
+        <select id="energia">
+          <option value="1500">Vivienda pequeña / bajo consumo</option>
+          <option value="3000">Vivienda mediana / consumo medio</option>
+          <option value="5000">Vivienda grande / alto consumo</option>
+        </select>
+
+        <label>Transporte diario principal:</label>
+        <select id="transporte">
+          <option value="automovil">Automóvil</option>
+          <option value="transporte_publico">Transporte Público</option>
+          <option value="bicicleta">Bicicleta</option>
+          <option value="a_pie">A pie</option>
+          <option value="motocicleta">Motocicleta</option>
+        </select>
+
+        <label>Tipo de alimentación:</label>
+        <select id="alimentacion">
+          <option value="omnivora">Omnívora</option>
+          <option value="vegetariana">Vegetariana</option>
+          <option value="vegana">Vegana</option>
+        </select>
+
+        <label>Nivel de consumo de bienes (mensual estimado en COP):</label>
+        <select id="consumo">
+          <option value="500">Bajo</option>
+          <option value="1000">Medio</option>
+          <option value="1500">Alto</option>
+        </select>
+
+        <button type="submit">Calcular</button>
+      </form>
+
+      <div id="resultado"></div>
+
+
+<button onclick="window.location.href='recomendaciones.html';" class="volver-inicio">Ver recomendaciones</button>
+
+<button onclick="window.location.href='index.html';" class="volver-inicio">Volver al inicio</button>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>Desarrollado por Ricardo José Angarita Rueda y Eliany Liseth Navarro Barbosa</p>
+    <p>“Cada acción cuenta. Tu huella puede ser el cambio que el planeta necesita.”</p>
+    <p>© 2025 RaiZero. Proyecto académico.</p>
+  </footer>
+
+  <!-- JavaScript incrustado para asegurar funcionalidad -->
+  <script>
+    document.getElementById("carbonForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const energia = parseFloat(document.getElementById("energia").value);
+      const transporte = document.getElementById("transporte").value;
+      const alimentacion = document.getElementById("alimentacion").value;
+      const consumo = parseFloat(document.getElementById("consumo").value);
+
+      let factorTransporte = 0;
+      let factorAlimentacion = 0;
+
+      switch (transporte) {
+        case "automovil":
+          factorTransporte = 0.19;
+          break;
+        case "motocicleta":
+          factorTransporte = 0.09;
+          break;
+        case "transporte_publico":
+          factorTransporte = 0.07;
+          break;
+        case "bicicleta":
+        case "a_pie":
+          factorTransporte = 0.0;
+          break;
+      }
+
+      switch (alimentacion) {
+        case "omnivora":
+          factorAlimentacion = 4.0;
+          break;
+        case "vegetariana":
+          factorAlimentacion = 2.5;
+          break;
+        case "vegana":
+          factorAlimentacion = 1.8;
+          break;
+      }
+
+      const huellaEnergia = energia * 0.189;
+      const huellaTransporte = factorTransporte * 10 * 365;
+      const huellaAlimentacion = factorAlimentacion * 365;
+      const huellaConsumo = consumo * 12 * 0.20;
+
+      const total = huellaEnergia + huellaTransporte + huellaAlimentacion + huellaConsumo;
+
+      const metaSostenible = 2000;
+      const promedioColombia = 2700;
+
+      let comparacion = "";
+      if (total <= metaSostenible) {
+        comparacion = "¡Excelente! Estás dentro del objetivo sostenible mundial (< 2,000 kg CO₂/año).";
+      } else if (total <= promedioColombia) {
+        comparacion = "Estás dentro del promedio colombiano (~2,700 kg CO₂/año).";
+      } else {
+        comparacion = "Tu huella está por encima del promedio colombiano. Se recomienda tomar acción.";
+      }
+
+      const resultadoHTML = `
+        <h3>Resultado de tu Huella de Carbono Anual (Colombia)</h3>
+        <ul>
+          <li><strong>Energía:</strong> ${huellaEnergia.toFixed(2)} kg CO₂</li>
+          <li><strong>Transporte:</strong> ${huellaTransporte.toFixed(2)} kg CO₂</li>
+          <li><strong>Alimentación:</strong> ${huellaAlimentacion.toFixed(2)} kg CO₂</li>
+          <li><strong>Consumo:</strong> ${huellaConsumo.toFixed(2)} kg CO₂</li>
+        </ul>
+        <p><strong>Total:</strong> ${total.toFixed(2)} kg CO₂/año</p>
+        <p>${comparacion}</p>
+      `;
+
+      document.getElementById("resultado").innerHTML = resultadoHTML;
+    });
+  </script>
+</body>
+</html>

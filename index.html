@@ -1,103 +1,259 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RaiZero</title>
-    <link rel="stylesheet" href="Style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RaiZero - Sostenibilidad</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+      <!-- Slick Carousel CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    /* Reset y básico */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0faf6;
+      color: #1e3a2b;
+      line-height: 1.6;
+    }
+nav, .navbar, .header {
+  background-color: #004d40; /* color verde oscuro */
+  border-top: none;
+  border-bottom: none;
+}
+
+
+
+nav {
+      background-color: transparent;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  background-color: transparent; /* Asegúrate que esté así */
+  color: white;
+  max-width: none; /* quita cualquier restricción de ancho */
+  margin: 0; /* quita márgenes innecesarios */
+}
+
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .logo i {
+      color: #4ade80; /* verde claro */
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a,
+    nav ul li button {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover,
+    nav ul li button:hover {
+      color: #4ade80;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80');
+      background-size: cover;
+      background-position: center;
+      border-radius: 15px;
+      padding: 4rem 2rem;
+      color: white;
+      text-align: center;
+      box-shadow: inset 0 0 0 2000px rgba(12, 74, 110, 0.7);
+      margin-bottom: 3rem;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+    }
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2.5rem;
+      font-weight: 500;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    }
+    .cta {
+      background-color: #4ade80;
+      border: none;
+      color: #0c4a6e;
+      padding: 1rem 2.5rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(74, 222, 128, 0.6);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .cta:hover {
+      background-color: #22c55e;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 18px rgba(34, 197, 94, 0.8);
+    }
+
+    /* Blog Section */
+    #blog {
+      margin-top: 2rem;
+    }
+    #blog h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      color: #005f52;
+    }
+    #blog h3 {
+      font-weight: 600;
+      color: #005f52;
+      margin-bottom: 1.5rem;
+    }
+    .articulos {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .articulo {
+      background-color: #daf2d7;
+      border-radius: 10px;
+      padding: 1.5rem 2rem;
+      width: 300px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      font-weight: 600;
+      color: #14532d;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .articulo:hover {
+      background-color: #bbf7d0;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #242424;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 400;
+      margin-top: 4rem;
+      letter-spacing: 0.05em;
+      user-select: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .articulos {
+        flex-direction: column;
+        align-items: center;
+      }
+      .articulo {
+        width: 90%;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-   <header>
-        <nav>
-            <div class="logo">🌱 RaiZero</div>
-            <ul>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#calculadora">Calculadora</a></li>
-                <li><a href="#recomendaciones">Recomendaciones</a></li>
-                <li><a href="#comunidad">Comunidad</a></li>
-                <button id="loginBtn">🔒</button>
-            </ul>
-        </nav>
-    </header>
+<header>
+  <nav>
+    <div class="logo"><i class="fas fa-seedling"></i> RaiZero</div>
+    <ul>
+      <li><button id="loginBtn" title="Iniciar sesión"><i class="fas fa-user"></i></button></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="calculadora.html">Calculadora</a></li>
+      <li><a href="recomendaciones.html">Recomendaciones</a></li>
+      <li><a href="comunidad.html">Comunidad</a></li>
+    </ul>
+  </nav>
+</header>
 
+<main>
+  <section class="hero">
+    <h1>Tu Camino hacia la sostenibilidad empieza aquí !!</h1>
+    <p>Descubre el impacto ambiental de tu consumo y recibe estrategias efectivas para reducirlo.</p>
+    <button id="ctaBtn" class="cta">Descúbrelo</button>
+  </section>
 
-    <section class="hero">
-        <h1>Tu Camino hacia la sostenibilidad empieza aquí !!</h1>
-        <p>Descubre el impacto ambiental de tu consumo y recibe estrategias efectivas para reducirlo.</p>
-        <button class="cta">Descúbrelo</button>
-    </section>
-
-    <section id="blog">
-        <h2>Blog</h2>
-        <h3>Artículos Importantes</h3>
-        <div class="articulos">
-            <div class="articulo">10 hábitos sostenibles que puedes adoptar hoy mismo</div>
-            <div class="articulo">Cómo reducir tus emisiones al cocinar en casa</div>
-            <div class="articulo">Transporte sostenible: beneficios y opciones ecológicas</div>
+  <section id="blog">
+      <h2>Artículos Importantes</h2>
+      <div class="articulos-carousel">
+        <div class="articulo">
+          <a href="https://www.wwf.org.co/?37461/10-hbitos-sostenibles-que-puedes-adoptar-hoy-mismo" target="_blank" rel="noopener noreferrer">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Hábitos sostenibles" />
+            <h3>10 hábitos sostenibles que puedes adoptar hoy mismo</h3>
+          </a>
+          <p>Pequeñas acciones diarias que contribuyen a un planeta más sano.</p>
         </div>
+        <div class="articulo">
+          <a href="https://www.greenpeace.org/colombia/haz-tu-parte/reducir-emisiones-cocina/" target="_blank" rel="noopener noreferrer">
+            <img src="https://manageat.com/wp-content/uploads/2022/05/healthy-leaves-mix-salad-2022-03-03-12-52-14-utc.jpg" alt="Cocina sostenible" />
+            <h3>Cómo reducir tus emisiones al cocinar en casa</h3>
+          </a>
+          <p>Tips prácticos para disminuir tu huella de carbono en la cocina.</p>
+        </div>
+        <div class="articulo">
+          <a href="https://www.unenvironment.org/es/temas/energia-y-transporte-sostenible" target="_blank" rel="noopener noreferrer">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Transporte sostenible" />
+            <h3>Transporte sostenible: beneficios y opciones ecológicas</h3>
+          </a>
+          <p>Explora alternativas verdes para tus desplazamientos diarios.</p>
+        </div>
+        <div class="articulo">
+          <a href="https://www.nationalgeographic.com/environment/article/ways-to-reduce-carbon-footprint" target="_blank" rel="noopener noreferrer">
+            <img src="https://images.unsplash.com/photo-1468071174046-657d9d351a40?auto=format&fit=crop&w=400&q=80" alt="Reducir huella de carbono" />
+            <h3>5 maneras fáciles para reducir tu huella de carbono</h3>
+          </a>
+          <p>Consejos simples para hacer una diferencia real y positiva.</p>
+        </div>
+      </div>
     </section>
-
-    <section id="calculadora">
-        <h2>Calculadora de Huella de Carbono</h2>
-        <form id="carbonForm">
-           <select id="energia">
-  <option value="1500">Vivienda pequeña / bajo consumo</option>
-  <option value="3000">Vivienda mediana / consumo medio</option>
-  <option value="5000">Vivienda grande / alto consumo</option>
-</select>
-
-            <select id="transporte">
-                <option value="automovil">Automóvil</option>
-                <option value="transporte_publico">Transporte Público</option>
-                <option value="bicicleta">Bicicleta</option>
-                <option value="a_pie">A pie</option>
-                <option value="motocicleta">Motocicleta</option>
-            </select>
-            <select id="alimentacion">
-                <option value="omnivora">Omnívora</option>
-                <option value="vegetariana">Vegetariana</option>
-                <option value="vegana">Vegana</option>
-            </select>
-           <select id="consumo">
-  <option value="500">Bajo (pocas compras, estilo minimalista)</option>
-  <option value="1000">Medio (consumo moderado)</option>
-  <option value="1500">Alto (consumo frecuente, tecnología, moda, etc.)</option>
-</select>
-
-            <button type="submit">Calcular</button>
-            <div id="resultado" class="resultado"></div>
-
-        </form>
-        <p id="resultado"></p>
-    </section>
-
-    <section id="recomendaciones">
-        <h2>Recomendaciones</h2>
-        <ul class="tips">
-            <li>Desenchufa los cargadores</li>
-            <li>Haz compras locales y de temporada</li>
-            <li>Cambia los focos por bombillos LED</li>
-            <li>Camina o usa bicicleta</li>
-            <li>Reduce el consumo de carne roja</li>
-            <li>Apaga las luces innecesarias</li>
-            <li>Consume menos productos plásticos</li>
-            <li>Reutiliza y da una segunda vida</li>
-            <li>Planta un árbol o apoya reforestación</li>
-            <li>Reduce el uso de la secadora</li>
-        </ul>
-    </section>
-
-    <section id="comunidad">
-        <h2>Comunidad</h2>
-        <p>Espacio dispuesto para expresarnos y motivarnos al cambio</p>
-        <textarea placeholder="Escribe tu comentario..."></textarea>
-        <button>Comentar</button>
-    </section>
-
-    <!-- Overlay para el fondo oscuro -->
-    <div id="login-overlay"></div>
-<!-- Login modal -->
-    <div id="login-container">
+    
+</main>
+<div id="login-container">
       <div class="login-section">
         <h2>Iniciar Sesión</h2>
         <form id="login-form">
@@ -120,14 +276,49 @@
         </form>
       </div>
     </div>
+<footer>
+  <p>Desarrollado por Ricardo José Angarita Rueda y Eliany Liseth Navarro Barbosa</p>
+  <p>“Cada acción cuenta. Tu huella puede ser el cambio que el planeta necesita.”</p>
+  <p>© 2025 RaiZero. Proyecto académico.</p>
+</footer>
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+  document.getElementById('ctaBtn').addEventListener('click', function () {
+    window.location.href = 'calculadora.html';
+  });
+   <!-- JQuery + Slick Carousel JS -->
+  
 
 
-    <footer>
-        <p>Desarrollado por Ricardo José Angarita Rueda y Eliany Liseth Navarro Barbosa</p>
-        <p>“Cada acción cuenta. Tu huella puede ser el cambio que el planeta necesita.”</p>
-        <p>© 2025 RaiZero. Proyecto académico.</p>
-    </footer>
+    $(document).ready(function(){
+      $('.articulos-carousel').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 4500,
+        dots: true,
+        arrows: true,
+        responsive: [
+          {
+            breakpoint: 900,
+            settings: {
+              slidesToShow: 2
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 1
+            }
+          }
+        ]
+      });
+    });
 
-    <script src="script.js"></script>
+</script>
 </body>
 </html>
